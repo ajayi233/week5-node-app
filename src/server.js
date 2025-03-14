@@ -42,7 +42,7 @@ app.get("/", async (req, res) => {
       totalPages,
       error: null,
     });
-    // res.json({ files });
+    
   } catch (error) {
     console.error("Error fetching images:", error);
     res.render("index", {
