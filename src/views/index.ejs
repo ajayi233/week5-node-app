@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Image Gallery</h1>
+      <p>Upload and manage your images</p>
+    </header>
+
+    <% if (error) { %>
+      <div class="alert error">
+        <%= error %>
+      </div>
+    <% } %>
+
+    <section class="upload-section">
+      <h2>Upload New Image</h2>
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="image">Select Image</label>
+          <input type="file" id="image" name="image" accept="image/*" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Upload Image</button>
+      </form>
+    </section>
+
+    <section class="image-grid">
+      <% images.forEach(image => { %>
+        <div class="image-card">
+          <img src="<%= image.url %>" alt="<%= image.name %>">
+          <div class="image-info">
+            <p><%= image.name %></p>
+            <form action="/delete/<%= image.id %>" method="POST">
+              <button type="submit" class="btn btn-secondary">Delete</button>
+            </form>
+          </div>
+        </div>
+      <% }); %>
+    </section>
+
+    <% if (totalPages > 1) { %>
+      <div class="pagination">
+        <% if (currentPage > 1) { %>
+          <a href="/?page=<%= currentPage - 1 %>" class="btn">Previous</a>
+        <% } %>
+        <span class="page-info">Page <%= currentPage %> of <%= totalPages %></span>
+        <% if (currentPage < totalPages) { %>
+          <a href="/?page=<%= currentPage + 1 %>" class="btn">Next</a>
+        <% } %>
+      </div>
+    <% } %>
+  </div>
+</body>
+</html>
