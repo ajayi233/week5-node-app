@@ -78,8 +78,8 @@ jobs:
                   }
                 },
                 "environment": [
-                    {"name": "AWS_BUCKET_NAME", "value": "myapp-bucket-180294215334"},
-                    {"name": "S3_BUCKET_URL", "value": "https://myapp-bucket-180294215334.s3.amazonaws.com"}
+                    {"name": "AWS_BUCKET_NAME", "value": "image-app-bucket-180294215334 "},
+                    {"name": "S3_BUCKET_URL", "value": "https://image-app-bucket-180294215334.s3.amazonaws.com"}
                 ],
                 "secrets": [
                     {"name": "AWS_ACCESS_KEY_ID", "valueFrom": "arn:aws:ssm:us-east-1:180294215334:parameter/access_key_id"},
